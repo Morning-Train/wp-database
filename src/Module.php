@@ -18,5 +18,19 @@ class Module extends AbstractModule {
             Application::getInstance();
             static::$booted = true;
         }
+
+        $this->migrateTables();
+    }
+
+    public function migrateTables() {
+        $context = $this->getProjectContext();
+
+        if(empty($context)) {
+            return;
+        }
+
+        $migrator = new Migrator($context);
+
+        $migrator->runPendingMigrations();
     }
 }
