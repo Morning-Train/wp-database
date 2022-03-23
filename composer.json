@@ -1,0 +1,21 @@
+{
+    "name": "morningtrain/wp-eloquent",
+    "description": "Use Eloquent for WordPress",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "version": "v0.1.0",
+    "authors": [
+        {
+            "name": "Martin Schadegg Brønniche",
+            "email": "ms@morningtrain.dk"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Morningtrain\\WP\\Eloquent\\": "src/"
+        }
+    },
+    "require": {
+        "illuminate/database": "^9.5"
+    }
+}
