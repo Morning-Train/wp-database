@@ -46,7 +46,7 @@ class WpConnection extends MySqlConnection
     public function __construct($wpdb, $database = '', $tablePrefix = '', array $config = [])
     {
         $this->db = $wpdb;
-        $pdo = new WpPdo($this);
+        $pdo = new WpPDO($this);
         parent::__construct($pdo, $database, $tablePrefix, $config);
     }
 
@@ -110,7 +110,7 @@ class WpConnection extends MySqlConnection
      *
      * @return bool
      */
-    public function statement($query, $bindings = array())
+    public function statement($query, $bindings = [])
     {
         $new_query = $this->bindParams($query, $bindings);
         return $this->unprepared($new_query);
@@ -124,7 +124,7 @@ class WpConnection extends MySqlConnection
      *
      * @return int
      */
-    public function affectingStatement($query, $bindings = array())
+    public function affectingStatement($query, $bindings = [])
     {
         $new_query = $this->bindParams($query, $bindings);
         return $this->runRawQuery($new_query);

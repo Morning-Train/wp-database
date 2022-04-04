@@ -3,7 +3,7 @@
 use PDO;
 use PDOException;
 
-class WpPdo extends PDO
+class WpPDO extends PDO
 {
     /**
      * @var WpConnection
