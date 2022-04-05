@@ -97,6 +97,9 @@ class Migrator {
 	 * @return void
 	 */
 	public function runMigrations($migration_files) {
+        if(empty($migration_files)) {
+            return;
+        }
 		foreach($migration_files as $migration_file) {
 			$this->runMigration($migration_file);
 		}
