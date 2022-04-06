@@ -1,5 +1,6 @@
 <?php namespace Morningtrain\WP\Eloquent\Migrations;
 
+use Illuminate\Support\Str;
 use Morningtrain\WP\Core\Abstracts\AbstractProject;
 use Symfony\Component\Finder\Finder;
 
@@ -78,7 +79,7 @@ class Migrator {
 	 * @return string
 	 */
 	protected function getVersionFromFileName($file_name) {
-		return substr($file_name, strpos($file_name, '-'));
+        return (string) Str::of($file_name)->after('-')->before('.php');
 	}
 
 	/**
