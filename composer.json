@@ -3,7 +3,7 @@
     "description": "Use Eloquent for WordPress",
     "minimum-stability": "stable",
     "license": "proprietary",
-    "version": "v0.1.0",
+    "version": "v0.1.4",
     "authors": [
         {
             "name": "Martin Schadegg Brønniche",
