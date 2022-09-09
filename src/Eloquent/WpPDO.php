@@ -1,4 +1,4 @@
-<?php namespace Morningtrain\WP\Eloquent\Eloquent;
+<?php namespace Morningtrain\WP\Database\Eloquent;
 
 use PDO;
 use PDOException;

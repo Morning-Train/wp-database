@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Morningtrain\\WP\\Eloquent\\": "src/"
+            "Morningtrain\\WP\\Database\\": "src/"
         }
     },
     "require": {
