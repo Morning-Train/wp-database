@@ -7,6 +7,7 @@
     use Illuminate\Events\Dispatcher;
     use Illuminate\Support\Facades\Facade;
     use Illuminate\Database\Capsule\Manager;
+    use Illuminate\Support\Facades\Schema;
 
     class Application
     {
@@ -41,7 +42,6 @@
         {
             $app = static::$manager->getContainer();
             $app->instance('db', static::$manager->getDatabaseManager());
-            Facade::setFacadeApplication($app);
             static::$manager->setAsGlobal();
             static::$manager->setEventDispatcher(new Dispatcher($app));
             static::$manager->bootEloquent();
@@ -59,6 +59,7 @@
             });
 
             Model::setConnectionResolver($app['db']);
+            Schema::setFacadeApplication($app);
         }
 
         /**

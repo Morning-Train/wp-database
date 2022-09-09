@@ -38,7 +38,9 @@ class WpConnection extends MySqlConnection
             if(isset($wpdb->dbname)){
                 $dbName=$wpdb->dbname;
             }
-            $instance = new self($wpdb,$dbName,$wpdb->prefix);
+            $instance = new self($wpdb,$dbName,$wpdb->prefix,[
+                'driver' => 'wp'
+            ]);
         }
         return $instance;
     }
@@ -224,5 +226,10 @@ class WpConnection extends MySqlConnection
             }
         }
         return $bindings;
+    }
+
+    public function getName()
+    {
+        return 'wp';
     }
 }
