@@ -7,14 +7,15 @@
 
     class Database
     {
-        public static function setup(string $dir)
+        public static function setup(string|array $dir)
         {
             Application::setup();
-            Migration::setup($dir);
+            Migration::setup((array)$dir);
+            static::migrate();
         }
 
         public static function migrate()
         {
-            // TODO: !!
+            Migration::migrate();
         }
     }
