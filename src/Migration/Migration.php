@@ -29,6 +29,11 @@
             static::$migrator = $capsule->getContainer()->make(Migrator::class);
         }
 
+        public static function getPath(): ?string
+        {
+            return static::$paths[0] ?? null;
+        }
+
         public static function migrate(?array $paths = null, $options = [])
         {
             if ($paths === null) {
