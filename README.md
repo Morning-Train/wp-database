@@ -1,64 +1,113 @@
-# Morningtrain\WP\Eloquent
+# Morningtrain\WP\Database
 
-An implementation of Laravel Eloquent for `Mornintrain\WP\Core`
+A Morningtrain package that implements Laravel Eloquent and Migrations into WordPress.
 
-## What is the "Eloquent"?
+## Table of Contents
 
-This package, implements Laravel Eloquent, and is used to handle custom database tables and models.
+- [Introduction](#introduction)
+- [Getting Started](#getting-started)
+    - [Installation](#installation)
+- [Dependencies](#dependencies)
+    - [illuminate/database](#illuminatedatabase)
+- [Usage](#usage)
+  - [Initializing package](#initializing-package)
+  - [Creating a Model](#creating-a-model)
+  - [Creating a Migration](#creating-a-migration)
+  - [Running migrations](#running-migrations)
+- [Credits](#credits)
+- [Testing](#testing)
+- [License](#license)
 
-You can read more about Laravel Database here: https://laravel.com/docs/9.x/database  
-You can read more about Laravel Eloquent here: https://laravel.com/docs/9.x/eloquent
+## Introduction
 
-## Getting started
+## Getting Started
 
-To get started with the module simply construct an instance of `\Morningtrain\WP\Eloquent\Module()` and pass it to the `addModule()` method on your project instance.
+To get started install the package as described below in [Installation](#installation).
 
-### Example
+To use the tool have a look at [Usage](#usage)
 
-```php
-// functions.php
-require __DIR__ . "/vendor/autoload.php";
+### Installation
 
-use Morningtrain\WP\Core\Theme;
+Install with composer
 
-Theme::init();
-
-// Add our module
-Theme::getInstance()->addModule(new \Morningtrain\WP\Eloquent\Module());
+```bash
+composer require morningtrain/wp-database
 ```
 
-## Models
-The model creation works just like it does in Laravel, but you can not use the scaffolding commands.
+## Dependencies
 
-The file must be placed inside a `Model` folder in the project root:
+### illuminate/database
 
-### Example
+[Database](https://laravel.com/docs/database)
+
+## Usage
+
+### Initializing package
+
 ```php
-// Models/Car.php
-use Illuminate\Database\Eloquent\Model;
-
-class Car extends Model {
-
-}
+<?php
+    Database::setup(__DIR__ . "/database/migrations");
 ```
 
-## Database Schma creation
-Databases can be created with the Schema facade just like in Laravel. But migrations is not yet implentet, so you need to handle these yourself.
+### Creating a Model
 
-The module will automatically handle and prefix the table (example: 'wp_')
+In `app/Models`
 
-See: https://laravel.com/docs/9.x/migrations#tables
-
-### Example
 ```php
-use \Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+// Foo.php
+<?php
 
-Schema::create('cars', function(Blueprint $table) {
-    $table->increments('id');
-    $table->string('name');
-    $table->string('color');
-    $table->dateTime('created_at');
-    $table->dateTime('updated_at');
-});
+    namespace MyProject\App\Models;
+
+    /**
+     * @property int $id
+     * @property string $title
+     */
+    class Foo extends \Illuminate\Database\Eloquent\Model
+    {
+        public $timestamps = false;
+        protected $table = 'foo';
+    }
 ```
+
+### Creating a Migration
+
+```shell
+wp make:migration create_foo_table
+```
+
+Will create a new migration file for you with `Schema::create('foo')` already prepared.
+
+### Running migrations
+
+You can run all new migrations like so:
+
+Using `wp cli`:
+
+```shell
+wp dbmigrate
+```
+
+Using `php`:
+
+```php
+<?php
+    \Morningtrain\WP\Database\Database::migrate();
+?>
+```
+
+## Credits
+
+- [Mathias Munk](https://github.com/mrmoeg)
+- Martin Schadegg Brønniche
+- [All Contributors](../../contributors)
+
+## Testing
+
+```bash
+composer test
+```
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
