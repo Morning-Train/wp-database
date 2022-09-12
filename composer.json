@@ -1,12 +1,16 @@
 {
-    "name": "morningtrain/wp-eloquent",
-    "description": "Use Eloquent for WordPress",
+    "name": "morningtrain/wp-database",
+    "description": "Laravel Eloquent and Migrations for WordPress",
     "minimum-stability": "stable",
     "license": "proprietary",
     "authors": [
         {
             "name": "Martin Schadegg Brønniche",
             "email": "ms@morningtrain.dk"
+        },
+        {
+            "name": "Mathias Munk",
+            "email": "mh@morningtrain.dk"
         }
     ],
     "autoload": {
