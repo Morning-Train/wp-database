@@ -2,6 +2,7 @@
 
     namespace Morningtrain\WP\Database;
 
+    use Morningtrain\WP\Database\Cli\Commands;
     use Morningtrain\WP\Database\Eloquent\Application;
     use Morningtrain\WP\Database\Migration\Migration;
 
@@ -11,7 +12,10 @@
         {
             Application::setup();
             Migration::setup((array)$dir);
-            static::migrate();
+//            static::migrate();
+            if(defined('WP_CLI')){
+                Commands::register();
+            }
         }
 
         public static function migrate()
