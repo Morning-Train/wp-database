@@ -2,6 +2,7 @@
 
     namespace Morningtrain\WP\Database\Cli;
 
+    use Morningtrain\PHPLoader\Loader;
     use Morningtrain\WP\Database\Database;
     use Morningtrain\WP\Database\Migration\Migration;
 
@@ -10,6 +11,9 @@
 
         public static function register()
         {
+            if (!class_exists('\Illuminate\Console\View\Components\Info')) {
+                Loader::create(__DIR__ . "/view-components");
+            }
             \WP_CLI::add_command('make:migration', [static::class, 'make']);
             \WP_CLI::add_command('dbmigrate', [static::class, 'migrate']);
         }

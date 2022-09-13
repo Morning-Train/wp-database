@@ -1,24 +1,24 @@
 {
-    "name": "morningtrain/wp-database",
-    "description": "Laravel Eloquent and Migrations for WordPress",
-    "minimum-stability": "stable",
-    "license": "proprietary",
-    "authors": [
-        {
-            "name": "Martin Schadegg Brønniche",
-            "email": "ms@morningtrain.dk"
-        },
-        {
-            "name": "Mathias Munk",
-            "email": "mh@morningtrain.dk"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Morningtrain\\WP\\Database\\": "src/"
-        }
+  "name": "morningtrain/wp-database",
+  "description": "Laravel Eloquent and Migrations for WordPress",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Martin Schadegg Brønniche",
+      "email": "ms@morningtrain.dk"
     },
-    "require": {
-        "illuminate/database": "^8.83|^9.5"
+    {
+      "name": "Mathias Munk",
+      "email": "mh@morningtrain.dk"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Morningtrain\\WP\\Database\\": "src/"
+    }
+  },
+  "require": {
+    "illuminate/database": "^8.83|^9.5"
+  }
 }
