@@ -19,6 +19,7 @@
     }
   },
   "require": {
-    "illuminate/database": "^8.83|^9.5"
+    "illuminate/database": "^8.83|^9.5",
+    "illuminate/pagination": "^8.83|^9.5"
   }
 }
