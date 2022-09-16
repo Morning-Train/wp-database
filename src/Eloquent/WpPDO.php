@@ -13,7 +13,7 @@ class WpPDO extends PDO
     public function __construct($wpdb)
     {
         try {
-            parent::__construct(null);
+            parent::__construct('');
         }catch (PDOException $e){
 
         }
