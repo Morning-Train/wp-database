@@ -10,14 +10,14 @@ class WpPDO extends PDO
      */
     protected $db;
     protected $in_transaction;
+
     public function __construct($wpdb)
     {
         try {
-            parent::__construct(null);
-        }catch (PDOException $e){
-
+            parent::__construct('');
+        } catch (PDOException $e) {
         }
-        $this->db=$wpdb;
+        $this->db = $wpdb;
     }
 
     /**
@@ -44,11 +44,13 @@ class WpPDO extends PDO
      * <b>Note</b>: An exception is raised even when the <b>PDO::ATTR_ERRMODE</b>
      * attribute is not <b>PDO::ERRMODE_EXCEPTION</b>.
      */
-    public function beginTransaction () {
-        if($this->in_transaction){
+    public function beginTransaction(): bool
+    {
+        if ($this->in_transaction) {
             throw new PDOException("Failed to start transaction. Transaction is already started.");
         }
-        $this->in_transaction=true;
+        $this->in_transaction = true;
+
         return $this->db->unprepared('START TRANSACTION');
     }
 
@@ -59,11 +61,13 @@ class WpPDO extends PDO
      * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
      * @throws PDOException if there is no active transaction.
      */
-    public function commit () {
-        if(!$this->in_transaction){
+    public function commit(): bool
+    {
+        if (! $this->in_transaction) {
             throw new PDOException("There is no active transaction to commit");
         }
-        $this->in_transaction=false;
+        $this->in_transaction = false;
+
         return $this->db->unprepared('COMMIT');
     }
 
@@ -74,11 +78,13 @@ class WpPDO extends PDO
      * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
      * @throws PDOException if there is no active transaction.
      */
-    public function rollBack () {
-        if(!$this->in_transaction){
+    public function rollBack(): bool
+    {
+        if (! $this->in_transaction) {
             throw new PDOException("There is no active transaction to rollback");
         }
-        $this->in_transaction=false;
+        $this->in_transaction = false;
+
         return $this->db->unprepared('ROLLBACK');
     }
 
@@ -88,16 +94,16 @@ class WpPDO extends PDO
      * @link https://php.net/manual/en/pdo.intransaction.php
      * @return bool <b>TRUE</b> if a transaction is currently active, and <b>FALSE</b> if not.
      */
-    public function inTransaction () {
+    public function inTransaction(): bool
+    {
         return $this->in_transaction;
     }
-
 
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Execute an SQL statement and return the number of affected rows
      * @link https://php.net/manual/en/pdo.exec.php
-     * @param string $statement <p>
+     * @param  string  $statement  <p>
      * The SQL statement to prepare and execute.
      * </p>
      * <p>
@@ -121,7 +127,8 @@ class WpPDO extends PDO
      * $db->exec() or die(print_r($db->errorInfo(), true));
      * </code>
      */
-    public function exec ($statement) {
+    public function exec(string $statement): int|false
+    {
         return $this->db->unprepared($statement);
     }
 
@@ -129,7 +136,7 @@ class WpPDO extends PDO
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Returns the ID of the last inserted row or sequence value
      * @link https://php.net/manual/en/pdo.lastinsertid.php
-     * @param string $name [optional] <p>
+     * @param  string  $name  [optional] <p>
      * Name of the sequence object from which the ID should be returned.
      * </p>
      * @return string If a sequence name was not specified for the <i>name</i>
@@ -148,7 +155,7 @@ class WpPDO extends PDO
      * <b>PDO::lastInsertId</b> triggers an
      * IM001 SQLSTATE.
      */
-    public function lastInsertId($name=null)
+    public function lastInsertId($name = null): string
     {
         return $this->db->getWpdb()->insert_id;
     }
