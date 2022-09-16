@@ -12,8 +12,8 @@
         {
             Application::setup();
             Migration::setup((array)$dir);
-//            static::migrate();
-            if(defined('WP_CLI')){
+
+            if (defined('WP_CLI')) {
                 Commands::register();
             }
         }

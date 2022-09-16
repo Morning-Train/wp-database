@@ -1,4 +1,5 @@
 <?php
+
     namespace Morningtrain\WP\Database\Eloquent;
 
     use Illuminate\Database\DatabaseServiceProvider;
