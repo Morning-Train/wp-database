@@ -1,21 +1,25 @@
 {
-    "name": "morningtrain/wp-eloquent",
-    "description": "Use Eloquent for WordPress",
-    "minimum-stability": "stable",
-    "license": "proprietary",
-    "version": "v0.1.4",
-    "authors": [
-        {
-            "name": "Martin Schadegg Brønniche",
-            "email": "ms@morningtrain.dk"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Morningtrain\\WP\\Eloquent\\": "src/"
-        }
+  "name": "morningtrain/wp-database",
+  "description": "Laravel Eloquent and Migrations for WordPress",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Martin Schadegg Brønniche",
+      "email": "ms@morningtrain.dk"
     },
-    "require": {
-        "illuminate/database": "^9.5"
+    {
+      "name": "Mathias Munk",
+      "email": "mh@morningtrain.dk"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Morningtrain\\WP\\Database\\": "src/"
+    }
+  },
+  "require": {
+    "illuminate/database": "^8.83|^9.5",
+    "illuminate/pagination": "^8.83|^9.5"
+  }
 }
