@@ -10,9 +10,11 @@
 
         public function render()
         {
-            try {
-                echo (string)$this->message;
-            } catch (\Exception $e) {
+            if(is_scalar($this->message)) {
+                try {
+                    echo (string)$this->message;
+                } catch (\Exception $e) {
+                }
             }
 
             return $this->message;
