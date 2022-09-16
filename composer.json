@@ -1,8 +1,15 @@
 {
   "name": "morningtrain/wp-database",
   "description": "Laravel Eloquent and Migrations for WordPress",
+  "keywords": [
+    "wordpress",
+    "morningtrain",
+    "database",
+    "eloquent",
+    "migrations"
+  ],
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     {
       "name": "Martin Schadegg Brønniche",
