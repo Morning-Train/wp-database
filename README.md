@@ -99,7 +99,7 @@ Using `php`:
 ## Credits
 
 - [Mathias Munk](https://github.com/mrmoeg)
-- Martin Schadegg Brønniche
+- [Martin Schadegg Brønniche](https://github.com/mschadegg)
 - [All Contributors](../../contributors)
 
 ## Testing
