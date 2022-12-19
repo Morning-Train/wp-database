@@ -27,6 +27,8 @@
   },
   "require": {
     "illuminate/database": "^8.83|^9.5",
-    "illuminate/pagination": "^8.83|^9.5"
+    "illuminate/pagination": "^8.83|^9.5",
+    "illuminate/events": "^8.83|^9.5",
+    "illuminate/filesystem": "^8.83|^9.5"
   }
 }
