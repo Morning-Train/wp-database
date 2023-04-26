@@ -8,7 +8,6 @@
     "eloquent",
     "migrations"
   ],
-  "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
     {
@@ -29,6 +28,7 @@
     "illuminate/database": "^8.83|^9.5",
     "illuminate/pagination": "^8.83|^9.5",
     "illuminate/events": "^8.83|^9.5",
-    "illuminate/filesystem": "^8.83|^9.5"
+    "illuminate/filesystem": "^8.83|^9.5",
+    "morningtrain/php-loader": "^0.3.3"
   }
 }
