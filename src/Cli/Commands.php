@@ -5,9 +5,8 @@
     use Illuminate\Database\Console\Migrations\TableGuesser;
     use Illuminate\Support\Str;
     use Morningtrain\PHPLoader\Loader;
-    use Morningtrain\WP\Database\Database;
     use Morningtrain\WP\Database\Migration\Migration;
-    use Morningtrain\WP\Database\Migration\MigrationCreator;
+    use Morningtrain\WP\Database\Migration\StubsHandler;
 
     class Commands
     {
@@ -77,10 +76,20 @@
                 \WP_CLI::error("Migration File: {$fileName} already exists");
             }
 
+            $stubName = 'migration';
+
+            if (!empty($table)) {
+                if ($create) {
+                    $stubName = 'migration.create';
+                } else {
+                    $stubName = 'migration.update';
+                }
+            }
+
             echo \WP_CLI::colorize("Generating migration file\n");
             echo \WP_CLI::colorize("in %y{$path}{$fileName}%n\n");
 
-            if(!file_put_contents($path . $fileName, MigrationCreator::getFileContent($table, (bool) $create))) {
+            if (!file_put_contents($path . $fileName, StubsHandler::parseStub($stubName, ['table' => $table]))) {
                 \WP_CLI::error("Migration file could not be created: {$fileName}");
             }
 
