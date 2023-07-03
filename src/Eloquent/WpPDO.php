@@ -15,7 +15,11 @@
         public function __construct($wpdb)
         {
             try {
-                parent::__construct('');
+                parent::__construct(
+                    'mysql:host=' . $wpdb->db->dbhost . ';dbname=' . $wpdb->db->dbname,
+                    $wpdb->db->dbuser,
+                    $wpdb->db->dbpassword
+                );
             } catch (PDOException $e) {
             }
             $this->db = $wpdb;
