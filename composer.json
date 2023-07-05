@@ -29,6 +29,7 @@
     "illuminate/pagination": "^8.83|^9.5",
     "illuminate/events": "^8.83|^9.5",
     "illuminate/filesystem": "^8.83|^9.5",
-    "morningtrain/php-loader": "^0.3.3"
+    "morningtrain/php-loader": "^0.3.3",
+    "doctrine/dbal": "^3.6"
   }
 }
