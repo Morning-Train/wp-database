@@ -49,6 +49,8 @@ composer require morningtrain/wp-database
     Database::setup(__DIR__ . "/database/migrations");
 ```
 
+If you want to use migrations from multiple directories you can do, by calling the setup method multiple times.
+
 ### Creating a Model
 
 In `app/Models`
@@ -76,6 +78,7 @@ In `app/Models`
 wp make:migration create_foo_table
 ```
 
+If there is multiple migration paths, you will be asked to choose one.  
 Will create a new migration file for you with `Schema::create('foo')` already prepared.
 
 ### Running migrations
