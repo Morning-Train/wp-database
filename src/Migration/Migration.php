@@ -29,9 +29,19 @@
             static::$migrator = $capsule->getContainer()->make(Migrator::class);
         }
 
-        public static function getPath(): ?string
+        public static function addPaths(string|array $path): void
         {
-            return static::$paths[0] ?? null;
+            static::$paths = array_merge(static::$paths, (array) $path);
+        }
+
+        public static function addOptions(array $options): void
+        {
+            static::$options = array_merge(static::$options, $options);
+        }
+
+        public static function getPaths(): array
+        {
+            return static::$paths;
         }
 
         public static function migrate(?array $paths = null, $options = [])
@@ -44,7 +54,7 @@
                 $options = static::$options;
             }
 
-            static::$migrator->run($paths, $options);
+            return static::$migrator->run($paths, $options);
         }
 
         public static function rollback(?array $paths = null, $options = [])
@@ -57,6 +67,6 @@
                 $options = static::$options;
             }
 
-            static::$migrator->rollback($paths, $options);
+            return static::$migrator->rollback($paths, $options);
         }
     }
