@@ -54,7 +54,7 @@
                 $options = static::$options;
             }
 
-            static::$migrator->run($paths, $options);
+            return static::$migrator->run($paths, $options);
         }
 
         public static function rollback(?array $paths = null, $options = [])
@@ -67,6 +67,6 @@
                 $options = static::$options;
             }
 
-            static::$migrator->rollback($paths, $options);
+            return static::$migrator->rollback($paths, $options);
         }
     }
